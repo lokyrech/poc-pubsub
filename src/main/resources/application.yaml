@@ -1,0 +1,11 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+gcp:
+  pubsub:
+    subscriber:
+      custom:
+        executor: custom-executor
+        parallel-pull-count: 4
+  project-id: pubsub-384323
