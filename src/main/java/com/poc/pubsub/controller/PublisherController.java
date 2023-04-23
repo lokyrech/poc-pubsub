@@ -1,6 +1,6 @@
 package com.poc.pubsub.controller;
 
-import com.poc.pubsub.service.PublisherService;
+import com.poc.pubsub.producer.MyOwnPublisherProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;
 import org.springframework.http.HttpStatus;
@@ -14,17 +14,14 @@ public class PublisherController {
     private PubSubTemplate pubSubTemplate;
 
     @Autowired
-    private PublisherService publisherService;
-
-    @GetMapping
-    void publishStaticMessage() {
-        publisherService.publish("Olá estatico!");
-    }
+    private MyOwnPublisherProducer myOwnPublisherProducer;
 
     @PostMapping
     HttpStatus publishMessage(@RequestParam String message) {
-        pubSubTemplate.publish("my-topic", message);
+        myOwnPublisherProducer.producer(message);
 
+//        pubSubTemplate.publish("my-topic", message);
+//
         return HttpStatus.ACCEPTED;
     }
 }

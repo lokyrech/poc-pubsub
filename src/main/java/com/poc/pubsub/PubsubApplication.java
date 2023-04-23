@@ -9,5 +9,4 @@ public class PubsubApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PubsubApplication.class, args);
 	}
-
 }

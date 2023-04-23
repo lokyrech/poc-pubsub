@@ -12,7 +12,7 @@
 	<artifactId>pubsub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pubsub</name>
-	<description>A sample project to understand the usage of micronaut-gcp-pubsub dependency</description>
+	<description>A sample project to understand and create a way to create consumers and producers pub/sub with Java custom annotations.</description>
 	<properties>
 		<java.version>11</java.version>
 		<swagger.version>3.0.0</swagger.version>
@@ -54,28 +54,13 @@
 			<artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
 			<version>1.2.8.RELEASE</version>
 		</dependency>
-		<dependency>
-			<groupId>io.micronaut.gcp</groupId>
-			<artifactId>micronaut-gcp-pubsub</artifactId>
-			<version>4.10.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.micronaut.gcp</groupId>
-			<artifactId>micronaut-gcp-common</artifactId>
-			<version>4.10.0</version>
-		</dependency>
-		<dependency>
-			<groupId>jakarta.annotation</groupId>
-			<artifactId>jakarta.annotation-api</artifactId>
-			<version>2.0.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>
