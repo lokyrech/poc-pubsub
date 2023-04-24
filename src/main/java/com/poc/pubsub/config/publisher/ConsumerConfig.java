@@ -1,4 +1,4 @@
-package com.poc.pubsub.config.Publisher;
+package com.poc.pubsub.config.publisher;
 
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;

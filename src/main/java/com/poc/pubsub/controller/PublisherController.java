@@ -1,6 +1,6 @@
 package com.poc.pubsub.controller;
 
-import com.poc.pubsub.config.Publisher.ConsumerProxyFactory;
+import com.poc.pubsub.config.publisher.ConsumerProxyFactory;
 import com.poc.pubsub.producer.MyOwnPublisherProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;

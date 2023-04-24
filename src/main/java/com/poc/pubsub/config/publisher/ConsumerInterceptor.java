@@ -1,4 +1,4 @@
-package com.poc.pubsub.config.Publisher;
+package com.poc.pubsub.config.publisher;
 
 
 import com.poc.pubsub.annotations.PubSubProducer;
