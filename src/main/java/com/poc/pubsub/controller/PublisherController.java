@@ -1,5 +1,6 @@
 package com.poc.pubsub.controller;
 
+import com.poc.pubsub.config.PublishToPubSubProxyFactory;
 import com.poc.pubsub.producer.MyOwnPublisherProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;
@@ -18,10 +19,8 @@ public class PublisherController {
 
     @PostMapping
     HttpStatus publishMessage(@RequestParam String message) {
-        myOwnPublisherProducer.producer(message);
-
-//        pubSubTemplate.publish("my-topic", message);
-//
+        MyOwnPublisherProducer proxy = PublishToPubSubProxyFactory.createProxy(myOwnPublisherProducer);
+        proxy.producer(message);
         return HttpStatus.ACCEPTED;
     }
 }
