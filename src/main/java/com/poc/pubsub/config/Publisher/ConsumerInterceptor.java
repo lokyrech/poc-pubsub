@@ -1,4 +1,4 @@
-package com.poc.pubsub.config;
+package com.poc.pubsub.config.Publisher;
 
 
 import com.poc.pubsub.annotations.PubSubProducer;
@@ -7,12 +7,12 @@ import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
-public class PublisherInterceptor implements MethodInterceptor {
-    private final PubSubPublisherConfig publisher;
+public class ConsumerInterceptor implements MethodInterceptor {
+    private final ConsumerConfig publisher;
     private final String topicName;
 
-    public PublisherInterceptor(String topicName) {
-        this.publisher = new PubSubPublisherConfig();
+    public ConsumerInterceptor(String topicName) {
+        this.publisher = new ConsumerConfig();
         this.topicName = topicName;
     }
 

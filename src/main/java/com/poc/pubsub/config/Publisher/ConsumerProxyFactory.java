@@ -1,4 +1,4 @@
-package com.poc.pubsub.config;
+package com.poc.pubsub.config.Publisher;
 
 import com.poc.pubsub.annotations.PubSubProducer;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class PublishToPubSubProxyFactory {
+public class ConsumerProxyFactory {
     public static <T> T createProxy(T target) {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(target.getClass());
@@ -18,7 +18,7 @@ public class PublishToPubSubProxyFactory {
             throw new PubSubException("Topic not valid.");
         }
         var topicName = methods.get(0).getAnnotation(PubSubProducer.class).topic();
-        enhancer.setCallback(new PublisherInterceptor(topicName));
+        enhancer.setCallback(new ConsumerInterceptor(topicName));
         return (T) enhancer.create();
     }
 }

@@ -1,4 +1,4 @@
-package com.poc.pubsub.config;
+package com.poc.pubsub.config.Publisher;
 
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @NoArgsConstructor
-public class PubSubPublisherConfig {
+public class ConsumerConfig {
     public void publish(String topicName, String message) throws Exception {
         Publisher publisher = Publisher.newBuilder(topicName).build();
         ByteString data = ByteString.copyFromUtf8(message);

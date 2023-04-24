@@ -1,21 +1,14 @@
-package com.poc.pubsub.processor;
+package com.poc.pubsub.config.Publisher.processor;
 
-import com.google.api.gax.core.ExecutorProvider;
-import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.cloud.pubsub.v1.MessageReceiver;
 import com.google.cloud.pubsub.v1.Subscriber;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gcp.pubsub.core.PubSubException;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Executor;
-
 @Slf4j
 @Component
-public class PubSubConsumerProcessor {
+public class ConsumerProcessor {
     public void addListener(String subscription, Class<?> messageType, Object bean, String methodName) {
         MessageReceiver messageReceiver = (message, consumer) -> {
             try {

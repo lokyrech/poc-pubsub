@@ -1,7 +1,7 @@
-package com.poc.pubsub.config;
+package com.poc.pubsub.config.consumer;
 
 import com.poc.pubsub.annotations.PubSubConsumer;
-import com.poc.pubsub.processor.PubSubConsumerProcessor;
+import com.poc.pubsub.config.Publisher.processor.ConsumerProcessor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -14,9 +14,9 @@ import java.lang.reflect.Method;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class PubSubConsumerBeanPostProcessor implements BeanPostProcessor {
+public class ConsumerBeanPostProcessor implements BeanPostProcessor {
 
-    private final PubSubConsumerProcessor pubSubConsumerProcessor;
+    private final ConsumerProcessor consumerProcessor;
 
     @Override
     public Object postProcessAfterInitialization(Object bean, @NonNull String beanName) throws BeansException {
@@ -25,7 +25,7 @@ public class PubSubConsumerBeanPostProcessor implements BeanPostProcessor {
             if (method.isAnnotationPresent(PubSubConsumer.class)) {
                 PubSubConsumer annotation = method.getAnnotation(PubSubConsumer.class);
                 log.info("The subscription {} has been assigned. {}", annotation.subscription(), beanName);
-                pubSubConsumerProcessor.addListener(annotation.subscription(), annotation.messageType(), bean, method.getName());
+                consumerProcessor.addListener(annotation.subscription(), annotation.messageType(), bean, method.getName());
             }
         }
         return bean;
