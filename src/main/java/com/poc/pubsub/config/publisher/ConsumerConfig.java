@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class ConsumerConfig {
 
     public void publish(String projectId, String topicId, String message) throws Exception {
-        TopicName topicName = TopicName.of(projectId, topicId);
+        TopicName topicName = TopicName.of(topicId, projectId);
         Publisher publisher = Publisher.newBuilder(topicName).build();
         ByteString data = ByteString.copyFromUtf8(message);
         PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
