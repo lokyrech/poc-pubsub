@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyOwnPublisherProducer {
 
-    @PubSubProducer(topic = "projects/pubsub-384323/topics/my-topic")
+    @PubSubProducer(projectId = "pubsub-384323", topicId = "my-topic")
     public String producer(String message) {
         return message;
     }

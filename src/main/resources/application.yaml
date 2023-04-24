@@ -4,8 +4,8 @@ spring:
       matching-strategy: ant_path_matcher
 gcp:
   pubsub:
-    subscriber:
-      custom:
-        executor: custom-executor
-        parallel-pull-count: 4
+    topics:
+      my-topic: my-topic
+    subscriptions:
+      my-sub: blaster-sub
   project-id: pubsub-384323

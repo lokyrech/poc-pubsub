@@ -9,10 +9,12 @@ import java.lang.reflect.Method;
 
 public class ConsumerInterceptor implements MethodInterceptor {
     private final ConsumerConfig publisher;
+    private final String projectId;
     private final String topicName;
 
-    public ConsumerInterceptor(String topicName) {
+    public ConsumerInterceptor(String projectId, String topicName) {
         this.publisher = new ConsumerConfig();
+        this.projectId = projectId;
         this.topicName = topicName;
     }
 
@@ -21,7 +23,7 @@ public class ConsumerInterceptor implements MethodInterceptor {
         Object result = methodProxy.invokeSuper(obj, args);
         if (method.isAnnotationPresent(PubSubProducer.class) && result instanceof String) {
             String message = (String) result;
-            publisher.publish(topicName, message);
+            publisher.publish(projectId, topicName, message);
         }
         return result;
     }

@@ -17,8 +17,9 @@ public class ConsumerProxyFactory {
         if(methods.size() < 1) {
             throw new PubSubException("Topic not valid.");
         }
-        var topicName = methods.get(0).getAnnotation(PubSubProducer.class).topic();
-        enhancer.setCallback(new ConsumerInterceptor(topicName));
+        var topicName = methods.get(0).getAnnotation(PubSubProducer.class).topicId();
+        var projectId = methods.get(0).getAnnotation(PubSubProducer.class).projectId();
+        enhancer.setCallback(new ConsumerInterceptor(topicName, projectId));
         return (T) enhancer.create();
     }
 }

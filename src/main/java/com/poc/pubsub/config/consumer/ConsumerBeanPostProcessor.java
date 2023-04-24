@@ -1,5 +1,6 @@
 package com.poc.pubsub.config.consumer;
 
+import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.poc.pubsub.annotations.PubSubConsumer;
 import com.poc.pubsub.config.publisher.processor.ConsumerProcessor;
 import lombok.RequiredArgsConstructor;
@@ -24,8 +25,12 @@ public class ConsumerBeanPostProcessor implements BeanPostProcessor {
         for (Method method : clazz.getMethods()) {
             if (method.isAnnotationPresent(PubSubConsumer.class)) {
                 PubSubConsumer annotation = method.getAnnotation(PubSubConsumer.class);
-                log.info("The subscription {} has been assigned. {}", annotation.subscription(), beanName);
-                consumerProcessor.addListener(annotation.subscription(), annotation.messageType(), bean, method.getName());
+                ProjectSubscriptionName subscriptionName = ProjectSubscriptionName.newBuilder()
+                        .setProject(annotation.projectId())
+                        .setSubscription(annotation.subscriptionId())
+                        .build();
+                log.info("The subscription {} has been assigned successfully by class: {}", annotation.subscriptionId(), beanName);
+                consumerProcessor.addListener(subscriptionName.toString(), annotation.messageType(), bean, method.getName());
             }
         }
         return bean;

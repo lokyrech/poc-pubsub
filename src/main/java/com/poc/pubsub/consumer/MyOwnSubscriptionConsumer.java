@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyOwnSubscriptionConsumer {
 
-    @PubSubConsumer(subscription = "projects/pubsub-384323/subscriptions/blaster-sub", messageType = String.class)
+    @PubSubConsumer(projectId = "pubsub-384323", subscriptionId = "blaster-sub", messageType = String.class)
     public void consumer(String message) {
         log.info(message);
     }
