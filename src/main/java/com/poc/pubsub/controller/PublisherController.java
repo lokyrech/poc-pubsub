@@ -1,6 +1,6 @@
 package com.poc.pubsub.controller;
 
-import com.poc.pubsub.config.publisher.ConsumerProxyFactory;
+import com.poc.pubsub.config.publisher.ProducerProxyFactory;
 import com.poc.pubsub.producer.MyOwnPublisherProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class PublisherController {
     @PostMapping
     HttpStatus publishMessage(@RequestParam String message) {
         try {
-            MyOwnPublisherProducer proxy = ConsumerProxyFactory.createProxy(myOwnPublisherProducer);
+            MyOwnPublisherProducer proxy = ProducerProxyFactory.createProxy(myOwnPublisherProducer);
             proxy.producer(message);
             return HttpStatus.ACCEPTED;
         } catch (Exception ex) {

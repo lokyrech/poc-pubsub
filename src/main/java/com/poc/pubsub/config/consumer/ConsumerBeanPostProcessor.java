@@ -2,7 +2,7 @@ package com.poc.pubsub.config.consumer;
 
 import com.google.pubsub.v1.ProjectSubscriptionName;
 import com.poc.pubsub.annotations.PubSubConsumer;
-import com.poc.pubsub.config.publisher.processor.ConsumerProcessor;
+import com.poc.pubsub.config.consumer.processor.ConsumerProcessor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;

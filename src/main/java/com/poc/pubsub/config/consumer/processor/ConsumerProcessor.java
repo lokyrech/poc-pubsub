@@ -1,4 +1,4 @@
-package com.poc.pubsub.config.publisher.processor;
+package com.poc.pubsub.config.consumer.processor;
 
 import com.google.cloud.pubsub.v1.MessageReceiver;
 import com.google.cloud.pubsub.v1.Subscriber;

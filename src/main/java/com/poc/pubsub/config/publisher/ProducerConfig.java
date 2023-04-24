@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @NoArgsConstructor
-public class ConsumerConfig {
+public class ProducerConfig {
 
     public void publish(String projectId, String topicId, String message) throws Exception {
         TopicName topicName = TopicName.of(topicId, projectId);

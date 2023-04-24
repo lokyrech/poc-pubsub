@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class ConsumerProxyFactory {
+public class ProducerProxyFactory {
     public static <T> T createProxy(T target) {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(target.getClass());
@@ -19,7 +19,7 @@ public class ConsumerProxyFactory {
         }
         var topicName = methods.get(0).getAnnotation(PubSubProducer.class).topicId();
         var projectId = methods.get(0).getAnnotation(PubSubProducer.class).projectId();
-        enhancer.setCallback(new ConsumerInterceptor(topicName, projectId));
+        enhancer.setCallback(new ProducerInterceptor(topicName, projectId));
         return (T) enhancer.create();
     }
 }

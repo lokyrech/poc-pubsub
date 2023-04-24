@@ -7,13 +7,13 @@ import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
-public class ConsumerInterceptor implements MethodInterceptor {
-    private final ConsumerConfig publisher;
+public class ProducerInterceptor implements MethodInterceptor {
+    private final ProducerConfig publisher;
     private final String projectId;
     private final String topicName;
 
-    public ConsumerInterceptor(String projectId, String topicName) {
-        this.publisher = new ConsumerConfig();
+    public ProducerInterceptor(String projectId, String topicName) {
+        this.publisher = new ProducerConfig();
         this.projectId = projectId;
         this.topicName = topicName;
     }
